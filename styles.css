@@ -1,0 +1,396 @@
+:root {
+    --bg-color: #0a0a0f;
+    --bg-accent: #12121f;
+    --neon-pink: #ff2d95;
+    --neon-blue: #0ff0fc;
+    --neon-purple: #8a2be2;
+    --neon-yellow: #fff95b;
+    --text-color: #ffffff;
+    --text-shadow-pink: 0 0 5px #ff2d95, 0 0 10px #ff2d95, 0 0 20px #ff2d95;
+    --text-shadow-blue: 0 0 5px #0ff0fc, 0 0 10px #0ff0fc, 0 0 20px #0ff0fc;
+    --box-shadow-pink: 0 0 5px #ff2d95, 0 0 10px #ff2d95, inset 0 0 5px #ff2d95;
+    --box-shadow-blue: 0 0 5px #0ff0fc, 0 0 10px #0ff0fc, inset 0 0 5px #0ff0fc;
+}
+
+@font-face {
+    font-family: 'Pokemon GB';
+    src: url('https://cdn.jsdelivr.net/gh/Superpencil/pokemon-font@main/fonts/pokemon-gb.woff2') format('woff2');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Orbitron', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    padding: 20px;
+    background-image: 
+        linear-gradient(45deg, var(--bg-accent) 25%, transparent 25%),
+        linear-gradient(-45deg, var(--bg-accent) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, var(--bg-accent) 75%),
+        linear-gradient(-45deg, transparent 75%, var(--bg-accent) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+#matrix-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    opacity: 0.3;
+}
+
+.robot-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    opacity: 0.3;
+    pointer-events: none;
+    filter: hue-rotate(45deg) brightness(1.2) contrast(1.1);
+    mix-blend-mode: screen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.robot-gif {
+    width: auto;
+    height: 100%;
+    max-width: none;
+    object-fit: contain;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) scale(1.1);
+    }
+    50% {
+        transform: translateY(-10px) scale(1.1);
+    }
+}
+
+.crt {
+    min-height: 100vh;
+    position: relative;
+}
+
+.crt::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        var(--gb-dark) 0px,
+        var(--gb-dark) 3px,
+        transparent 3px,
+        transparent 6px
+    );
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+header {
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    color: var(--neon-pink);
+    text-shadow: var(--text-shadow-pink);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid var(--neon-pink);
+    box-shadow: var(--box-shadow-pink);
+    background: rgba(255, 45, 149, 0.1);
+    animation: neonPulse 1.5s infinite alternate;
+}
+
+.glitch {
+    position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 var(--secondary-color);
+    animation: glitch-1 2s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: 2px 0 var(--accent-color);
+    animation: glitch-2 3s infinite linear alternate-reverse;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.nav-btn {
+    background: transparent;
+    border: 2px solid var(--neon-blue);
+    color: var(--neon-blue);
+    padding: 12px 24px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    margin: 10px;
+    position: relative;
+    box-shadow: var(--box-shadow-blue);
+    transform-origin: center;
+}
+
+.nav-btn:hover {
+    background: var(--neon-blue);
+    color: var(--bg-color);
+    text-shadow: none;
+    animation: sway 0.5s ease-in-out infinite alternate;
+    box-shadow: 0 0 20px var(--neon-blue);
+}
+
+@keyframes sway {
+    from {
+        transform: rotate(-2deg) scale(1.05);
+    }
+    to {
+        transform: rotate(2deg) scale(1.05);
+    }
+}
+
+.nav-btn:hover {
+    background: var(--text-color);
+    color: var(--bg-color);
+    transform: scale(1.05);
+}
+
+section {
+    display: none;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+section.active {
+    display: block;
+}
+
+.section-title {
+    color: var(--neon-pink);
+    margin-bottom: 2rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: var(--text-shadow-pink);
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    border: 2px solid var(--text-color);
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px var(--text-color);
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background: var(--text-color);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.skill-item {
+    border: 2px solid var(--text-color);
+    padding: 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.skill-item:hover {
+    background: var(--text-color);
+    color: var(--bg-color);
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    background: transparent;
+    border: 2px solid var(--text-color);
+    color: var(--text-color);
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+}
+
+textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.submit-btn {
+    background: var(--text-color);
+    color: var(--bg-color);
+    border: none;
+    padding: 0.5rem 2rem;
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: var(--accent-color);
+}
+
+.blink {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@keyframes glitch-1 {
+    0% { clip-path: inset(80% 0 0 0); }
+    100% { clip-path: inset(0 0 80% 0); }
+}
+
+@keyframes glitch-2 {
+    0% { clip-path: inset(0 80% 0 0); }
+    100% { clip-path: inset(0 0 0 80%); }
+}
+
+.scan-line {
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    background: linear-gradient(
+        0deg,
+        rgba(0,255,0,0) 0%,
+        rgba(0,255,0,0.1) 50%,
+        rgba(0,255,0,0) 100%
+    );
+    animation: scan 8s linear infinite;
+}
+
+@keyframes neonPulse {
+    from {
+        text-shadow: var(--text-shadow-pink);
+        box-shadow: var(--box-shadow-pink);
+    }
+    to {
+        text-shadow: 0 0 10px #ff2d95, 0 0 20px #ff2d95, 0 0 30px #ff2d95;
+        box-shadow: 0 0 10px #ff2d95, 0 0 20px #ff2d95, inset 0 0 10px #ff2d95;
+    }
+}
+
+@keyframes neonFlow {
+    0% {
+        transform: translateY(-100%) rotate(45deg);
+    }
+    50% {
+        transform: translateY(200%) rotate(45deg);
+    }
+    100% {
+        transform: translateY(-100%) rotate(45deg);
+    }
+}
+
+.project-card {
+    background: var(--bg-accent);
+    border: 2px solid var(--neon-purple);
+    padding: 20px;
+    margin: 15px;
+    box-shadow: 0 0 10px var(--neon-purple);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px var(--neon-purple);
+}
+
+.skill-item {
+    background: var(--bg-accent);
+    border: 2px solid var(--neon-yellow);
+    padding: 15px;
+    margin: 10px;
+    box-shadow: 0 0 10px var(--neon-yellow);
+    transition: all 0.3s ease;
+}
+
+.skill-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--neon-yellow);
+}

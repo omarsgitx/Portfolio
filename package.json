@@ -1,0 +1,10 @@
+{
+  "name": "retro-cv",
+  "version": "1.0.0",
+  "scripts": {
+    "import-pdf": "node src/import.js"
+  },
+  "dependencies": {
+    "pdf-parse": "^1.1.1"
+  }
+}

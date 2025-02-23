@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro CV</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;900&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#0a0a0f">
+</head>
+<body>
+    <canvas id="matrix-bg"></canvas>
+    <div class="robot-container">
+        <img src="https://raw.githubusercontent.com/gist/TheRockman/abc2aeae42436c3b01d2a5679cc8757b/raw/8434bf52ffc1d8d2d80ab7e9fd10854aef9c903f/bot.gif" alt="Breakdancing Robot" class="robot-gif">
+    </div>
+    <div class="crt">
+        <header>
+            <div class="gb-screen-border">
+                <h1>PORTFOLIO</h1>
+            </div>
+            <div class="scan-line"></div>
+        </header>
+
+        <nav>
+            <button class="nav-btn" data-section="projects">PROJECTS</button>
+            <button class="nav-btn" data-section="experience">EXPERIENCE</button>
+            <button class="nav-btn" data-section="skills">SKILLS</button>
+            <button class="nav-btn" data-section="contact">CONTACT</button>
+        </nav>
+
+        <main>
+            <section id="projects" class="active">
+                <h2 class="section-title">PROJECTS <span class="blink">_</span></h2>
+                <div class="project-grid">
+                    <!-- Project cards will be added here via JavaScript -->
+                </div>
+            </section>
+
+            <section id="experience">
+                <h2 class="section-title">EXPERIENCE <span class="blink">_</span></h2>
+                <div class="timeline">
+                    <!-- Experience items will be added here via JavaScript -->
+                </div>
+            </section>
+
+            <section id="skills">
+                <h2 class="section-title">SKILLS <span class="blink">_</span></h2>
+                <div class="skills-grid">
+                    <!-- Skills will be added here via JavaScript -->
+                </div>
+            </section>
+
+            <section id="contact">
+                <h2 class="section-title">CONTACT <span class="blink">_</span></h2>
+                <div class="contact-form">
+                    <form id="contact-form">
+                        <input type="text" placeholder="NAME" required>
+                        <input type="email" placeholder="EMAIL" required>
+                        <textarea placeholder="MESSAGE" required></textarea>
+                        <button type="submit" class="submit-btn">SEND MESSAGE</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

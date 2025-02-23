@@ -1,0 +1,37 @@
+{
+  "user": {
+    "name": "Omar Tijari",
+    "title": "Full-Stack Developer",
+    "terminalPrompt": "guest@retro-cv:~$",
+    "asciiArt": "",
+    "bio": "Seasoned developer specializing in modern web technologies"
+  },
+  "skills": [
+    {
+      "category": "Programming",
+      "items": ["JavaScript/TypeScript", "Python", "Java"]
+    },
+    {
+      "category": "Frameworks",
+      "items": ["React", "Node.js", "Express"]
+    }
+  ],
+  "experience": [
+    {
+      "company": "Tech Corp",
+      "role": "Senior Developer",
+      "duration": "2020-Present",
+      "achievements": [
+        "Led migration to microservices architecture",
+        "Implemented CI/CD pipeline"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of Tech",
+      "degree": "B.S. Computer Science",
+      "year": 2018
+    }
+  ]
+}
